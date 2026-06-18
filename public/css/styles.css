@@ -1,18 +1,245 @@
-html, body, #app {
-    height: 100%;
+:root {
+    --bg-color: #faf9f8;
+    --text-color: #413222;
+
+    --pink: #f3bcb9;
+    --brown: #c48a5f;
+    --beige: #e3b283;
+    --green: #e3e9c7;
+
+    --title-font: 'Playfair Display', serif;
+    --body-font: 'Nunito Sans', sans-serif;
+}
+
+html, body, #app, #admin-app {
+    min-height: 100vh;
+    font-family: var(--body-font);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2rem;
+}
+
+.titles {
+    font-family: var(--title-font);
+    font-weight: bold;
+}
+
+.titles ~ p {
+    margin-bottom: 20px;
+}
+
+.category-title {
+    text-transform: capitalize;
 }
 
 #app {
-    display: grid;
-    grid-template-rows: 56px 1fr 100px;
+    display: flex;
+    flex-direction: column;
 }
+
+main {
+    flex: 1;
+}
+
+.about {
+    max-width: 100%;
+    padding: 40px;
+    background-color: var(--beige);
+    margin: 40px 0;
+}
+
+.about > div {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+/* nav */
+
+nav:not(.admin-nav) {
+background-color: var(--brown);
+border-radius: 8px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+margin: 10px auto;
+}
+
+nav:not(.admin-nav) .nav-item .nav-link {
+    color: #fff;
+}
+
+nav:not(.admin-nav) .nav-item .nav-link:hover, 
+nav:not(.admin-nav) .nav-item .nav-link.active {
+    color: var(--text-color);
+}
+
+nav:not(.admin-nav) .nav-item .dropdown-item:hover {
+    background-color: var(--beige);
+}
+
+nav:not(.admin-nav) .nav-item .dropdown-item.active {
+    background-color: #fff;
+    color: var(--text-color);
+}
+
+.admin-nav {
+    background-color: var(--brown);
+    width: 200px;
+    padding: 20px;
+}
+
+.admin-nav .nav-item .nav-link, 
+.admin-nav .nav-item p {
+    color: #fff;
+}
+
+.admin-nav .nav-item .nav-link:hover,
+.admin-nav .nav-item .nav-link.active {
+    color: var(--text-color);
+}
+
+
+/* cards */
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 20px;
+}
+
+.card-body p, .card-body h2, .card-body h3{
+    color: var(--text-color);
+}
+
+/* buttons */
+
+#app .main-button,
+#admin-app .main-button {
+    background-color: var(--pink);
+    color: var(--text-color);
+    padding: 10px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+#admin-app .edit-button {
+    background-color: var(--beige);
+}
+
+#admin-app .delete-button {
+    background-color: var(--text-color);
+    color: #fff
+}
+
+#app .main-button:hover,
+#admin-app .main-button:hover,
+#admin-app .edit-button:hover, 
+#admin-app .delete-button:hover {
+    background-color: var(--brown);
+    color: #fff;
+}
+
+/* product details */
+
+.product-details {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    width: 800px;
+    margin: 0 auto;
+}
+
+/* blog */
+
+.post-date {
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+.post {
+    display: flex;
+    background-color: var(--green);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
+    width: fit-content;
+}
+
+.post img {
+    width: 200px;
+    margin: 20px;
+}
+
+.post-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.post-content {
+    max-width: 350px;
+}
+
+/* ADMIN */
+
+#admin-app {
+    min-height: 100vh;
+    display: flex;
+}
+
+/* forms */
+
+form:not(.auth-form) {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0 55px 0;
+}
+
+.delete-message {
+    background-color: var(--pink);
+    color: #fff;
+    width: 70%;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+/* auth */
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.auth-form {
+    width: 100%;
+    max-width: 600px;
+    background-color: var(--green);
+    padding: 2rem;
+    border-radius: 20px;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* footer */
 
 footer {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100px;
-    background-color: #333;
+    background-color: var(--brown);
+    margin-top: 30px;
     color: #fff;
 }
 

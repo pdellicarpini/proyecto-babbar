@@ -1,0 +1,9 @@
+# productos
+
+- product_id    BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY
+- name          VARCHAR(100)
+- price         INT     
+- description   TEXT    
+- category      
+- img   
+- stock
