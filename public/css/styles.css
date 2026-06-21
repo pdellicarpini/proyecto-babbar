@@ -205,7 +205,6 @@ form:not(.auth-form) {
 
 .delete-message {
     background-color: var(--pink);
-    color: #fff;
     width: 70%;
     border-radius: 4px;
     margin: 0 auto;

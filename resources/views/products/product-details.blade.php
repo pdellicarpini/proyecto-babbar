@@ -26,9 +26,9 @@
         </div> 
     </div>
 
-    <div class="container m-5 text-center">
+    <div class="container my-5 text-center m-auto">
         <h2 class="titles m-4">Productos relacionados</h2>
-        <div class="container d-flex justify-content-center gap-4">
+        <div class="container d-flex justify-content-center align-items-center gap-4">
         @foreach ($relatedProducts as $product)
             <div class="card" style="width: 20rem;">
                 <img src="{{ asset('storage/images/products/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">

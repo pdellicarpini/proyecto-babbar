@@ -62,16 +62,26 @@
             @enderror
         </div>
         <div class="mb-3">
+            <p>Imagen actual:</p>
+            @if($post->image != null && \Storage::disk('public')->exists('images/posts/' . $post->image))
+                <img src="{{ asset('storage/images/posts/' . $post->image) }}" class="img-fluid rounded" width="300px" alt="{{ $post->image_alt }}">
+            @else
+                <p>No hay imagen disponible actualmente.</p>
+            @endif
+        </div>
+        <div class="mb-3">
             <label for="image" class="form-label">Imagen</label>
             <input
                 type="file"
                 class="form-control @error('image') is-invalid @enderror"
                 id="image"
                 name="image"
+                aria-describedby="image-help"
                 @error('image')
                 aria-invalid="true"
                 aria-errormessage="image-error"
                 @enderror>
+            <div class="form-text" id="image-help">Actualizar una imagen para la entrada (máx. 2MB)</div>
             @error('image')
             <div class="text-danger" id="image-error">{{ $message }}</div>
             @enderror

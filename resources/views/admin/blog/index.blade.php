@@ -28,7 +28,7 @@
                 @foreach ($posts as $post)
                 <tbody>
                     <tr>
-                        <td><img src="{{ asset('storage/images/posts/' . $post->image) }}" class="img-fluid rounded"></td>
+                        <td><img src="{{ asset('storage/images/posts/' . $post->image) }}" class="img-fluid rounded" alt="{{ $post->image_alt }}"></td>
                         <td>{{ $post->image_alt }}</td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->preview }}</td>

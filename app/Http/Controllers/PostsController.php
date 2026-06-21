@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -27,7 +28,7 @@ class PostsController extends Controller
     }
 
     public function store(Request $request)
-    {
+{
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'preview' => 'required|string',
@@ -69,6 +70,10 @@ class PostsController extends Controller
         $post = Post::findOrFail($id);
         $post->delete();
 
+        if(isset($post->image) && $post->image !== null && Storage::disk('public')->exists('images/posts/' . $post->image)) {
+            Storage::disk('public')->delete('images/posts/' . $post->image);
+        }
+
         return redirect()
             ->route('admin.blog')
             ->with('feedback.message', 'Entrada eliminada exitosamente.');
@@ -103,11 +108,16 @@ class PostsController extends Controller
         if($request->hasFile('image')) {
 
             $path = $request->file('image')->store('images/posts', 'public');
-
             $data['image'] = basename($path);
+
+            $oldImage = $post->image;
         }
 
         $post->update($data);
+
+        if(isset($oldImage) && $oldImage !== null && Storage::disk('public')->exists('images/posts/' . $oldImage)) {
+            Storage::disk('public')->delete('images/posts/' . $oldImage);
+        }
 
         return redirect()
             ->route('admin.blog')

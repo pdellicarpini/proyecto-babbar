@@ -9,17 +9,17 @@
     <x-slot:title>Babbar</x-slot:title>
     <section class="container banner">
         <img src="{{ asset('/storage/images/banner.png')}}" alt="Banner de Babbar" class="mb-4">
-        <h1 class="d-none">Babbar</h1>
-        <p class="d-none">Velas aromáticas y yeso artesanal</p>
+        <h1 class="visually-hidden">Babbar</h1>
+        <p class="visually-hidden">Velas aromáticas y yeso artesanal</p>
     </section>
     <section class="container">
-        <h2 class="titles fs-3 text-center m-4">Productos con Vela</h2>
+        <h2 class="titles fs-3 text-center m-4 m-auto">Productos con Vela</h2>
         <div class="main-content">
             @foreach ($products as $product)
             <div class="card" style="width: 20rem;">
                 <img src="{{ asset('storage/images/products/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
                 <div class="card-body d-flex flex-column align-items-around justify-content-between">
-                    <h2 class="card-title fs-4 fw-bold text-center">{{ $product->name }}</h2>
+                    <h3 class="card-title fs-4 fw-bold text-center">{{ $product->name }}</h3>
                     <p class="card-text">{{ $product->description }}</p>
                     <a href="{{ route('product.show', ['id' => $product->id]) }}" class="btn main-button delete-button">Ver detalles</a>
                 </div>
