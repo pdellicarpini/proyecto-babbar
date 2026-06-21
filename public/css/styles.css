@@ -230,6 +230,29 @@ form:not(.auth-form) {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
+.register-form {
+    background-color: var(--pink);
+}
+
+.register-form button {
+    background-color: var(--green);
+    padding: 10px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.register-form button:hover {
+    background-color: var(--brown);
+    color: #fff;
+}
+
+div.login div a {
+    color: var(--brown);
+}
+
+div.login div a:hover {
+    color: var(--pink);
+}
+
 /* footer */
 
 footer {

@@ -16,6 +16,12 @@ Route::get('/ingresar', [\App\Http\Controllers\AuthController::class, 'login'])
 Route::post('/ingresar', [\App\Http\Controllers\AuthController::class, 'process'])
     ->name('login.process');
 
+Route::get('/registrarse', [\App\Http\Controllers\AuthController::class, 'register'])
+    ->name('register');
+
+Route::post('/registrarse', [\App\Http\Controllers\AuthController::class, 'store'])
+    ->name('register.store');
+
 Route::post('/salir', [\App\Http\Controllers\AuthController::class, 'logout'])
     ->name('logout');
 
@@ -30,11 +36,11 @@ Route::get('/catalogo/{id}', [\App\Http\Controllers\ProductsController::class, '
 
 Route::get('/admin/catalogo/agregar', [\App\Http\Controllers\ProductsController::class, 'create'])
     ->name('product.create')
-    ->middleware('auth');
+    ->middleware('auth', 'admin');
 
 Route::post('/admin/catalogo/agregar', [\App\Http\Controllers\ProductsController::class, 'store'])
     ->name('product.store')
-    ->middleware('auth');
+    ->middleware('auth', 'admin');
 
 // blog routes
 
@@ -49,36 +55,37 @@ Route::get('/blog/{id}', [\App\Http\Controllers\PostsController::class, 'show'])
 // admin CRUD routes
 
 Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])
-    ->name('admin');
+    ->name('admin')
+    ->middleware('auth', 'admin');
 
 Route::get('/admin/blog/index', [\App\Http\Controllers\AdminController::class, 'blog'])
     ->name('admin.blog')
-    ->middleware('auth');
+    ->middleware('auth', 'admin');
 
 Route::get('/admin/blog/agregar', [\App\Http\Controllers\PostsController::class, 'create'])
     ->name('post.create')
-    ->middleware('auth');
+    ->middleware('auth', 'admin');
 
 Route::post('/admin/blog/agregar', [\App\Http\Controllers\PostsController::class, 'store'])
     ->name('post.store')
-    ->middleware('auth');
+    ->middleware('auth', 'admin');
 
 Route::get('/admin/blog/{id}/eliminar', [\App\Http\Controllers\PostsController::class, 'delete'])
     ->name('post.delete')
     ->whereNumber('id')
-    ->middleware('auth');
+    ->middleware('auth', 'admin');
 
 Route::post('/admin/blog/{id}/eliminar', [\App\Http\Controllers\PostsController::class, 'destroy'])
     ->name('post.destroy')
     ->whereNumber('id')
-    ->middleware('auth');
+    ->middleware('auth', 'admin');
 
 Route::get('/admin/blog/{id}/editar', [\App\Http\Controllers\PostsController::class, 'edit'])
     ->name('post.edit')
     ->whereNumber('id')
-    ->middleware('auth');
+    ->middleware('auth', 'admin');
 
 Route::post('/admin/blog/{id}/editar', [\App\Http\Controllers\PostsController::class, 'update'])
     ->name('post.update')
     ->whereNumber('id')
-    ->middleware('auth');
+    ->middleware('auth', 'admin');

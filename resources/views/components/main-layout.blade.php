@@ -54,9 +54,11 @@
                                 <button type="submit" class="nav-link btn btn-link">{{ auth()->user()->email }} | Cerrar Sesión</button>
                             </form>
                         </li>
+                        @if(auth()->user()->role === 'admin')
                         <li class="nav-item">
                             <x-nav-link to="admin" linkClass="nav-link">Admin</x-nav-link>
                         </li>
+                        @endif
                         @else
                         <li class="nav-item">
                             <x-nav-link to="login" linkClass="nav-link"> <i class="bi bi-person-circle mx-1"></i> Iniciar Sesión</x-nav-link>
